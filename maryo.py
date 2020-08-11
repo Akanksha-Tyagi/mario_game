@@ -1,4 +1,4 @@
-
+    pygame.quit()
 #Import modules
 
 import pygame, random, sys
@@ -102,6 +102,8 @@ class maryo:
 
 
 def terminate():        #to end the program
+    with open ("topscore.txt", "w") as f:
+        f.write(str(topscore))
     pygame.quit()
     sys.exit()
 
@@ -194,7 +196,11 @@ waitforkey()
 
 #start for the main code
 
-topscore = 0
+try:
+    with open ("topscore.txt", "r") as f:
+        topscore = int(f.read())
+except:
+    topscore = 0
 Dragon = dragon()
 
 while True:
